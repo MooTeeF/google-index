@@ -19,7 +19,7 @@ jobs:
           pip install -r requirements.txt
 
       - name: Store google api credential to a file
-        run: echo '${{ secrets.GOOGLE_API_CREDENTIAL }}' >> cred.json
+        run: echo '${{ secrets.GOOGLE_API_CREDENTIAL }}' > cred.json
 
       - name: Run the script
         run: python main.py -i urls.txt -e successful.txt -c cred.json
@@ -28,3 +28,4 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: "Add new urls to successful.json"
+          file_pattern: successful.txt
