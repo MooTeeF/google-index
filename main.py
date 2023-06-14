@@ -31,7 +31,7 @@ class Indexer:
 
         service = build('indexing', 'v3', credentials=credentials)
         batch = service.new_batch_http_request(callback=self.api_callback)
-        for url in urls:
+        for url in self.urls:
             batch.add(service.urlNotifications().publish(body={"url": url, "type": 'URL_UPDATED'}))
         batch.execute()
         return pd.DataFrame(self.successful_urls)
