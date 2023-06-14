@@ -57,7 +57,8 @@ def main(args: argparse.Namespace):
         exclude_urls = pd.concat([exclude_urls, successful_urls])
     else:
         exclude_urls = successful_urls
-    exclude_urls.to_csv(args.exclude, index=False)
+    if len(exclude_urls):
+        exclude_urls.to_csv(args.exclude, index=False)
 
 
 if __name__ == '__main__':
