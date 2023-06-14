@@ -24,6 +24,8 @@ class Indexer:
                 url=response['urlNotificationMetadata']['latestUpdate']['url'].strip(),
                 time=datetime.now(),
             ))
+        else:
+            print(exception)
 
     def index(self) -> pd.DataFrame:
         credentials = ServiceAccountCredentials.from_json_keyfile_name(self.google_api_credential, scopes=SCOPES)
